@@ -1,1 +1,8 @@
+# operating system stuff
 .DS_Store
+
+# dependencies installed by npm
+node_modules
+
+# build artefacts
+public
