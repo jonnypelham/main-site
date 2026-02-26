@@ -1,0 +1,12 @@
+---
+layout: base.njk
+permalink: "posts/{{ title | slugify }}/index.html"
+---
+
+<article class="subregion flow">
+  <h2>{{title}}</h2>
+  <time>{{date | blogDate }}</time>
+
+    {{content|safe}}
+    
+</article>

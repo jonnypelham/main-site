@@ -1,5 +1,6 @@
-# operating system stuff
+# file stuff
 .DS_Store
+.vscode
 
 # dependencies installed by npm
 node_modules

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/jpb4qmr.css">
+</head>
+
+<body>
+    <div id="wrapper">
+
+      <main>
+        <section class="region flow">
+	        {{ content | safe }}
+        </section>
+      </main>
+
+        <footer class="region auto-grid page-footer">
+            <div>
+                Jonathan Pelham
+            </div>
+
+            <div>
+                Graphic designer based in London, UK, specialising in print and digital book design.
+            </div>
+
+            <div>
+                <ul>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/">Contact</a></li>
+                    <li><a href="/">Blog</a></li>
+                    <li><a href="/">Colophon</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="footer-item"><a href="#">j@jpelham.co.uk</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">LinkedIn</a></p>
+            </div>
+
+            <div class="fullwidth">
+                <svg width="50" height="50" viewBox="0 0 50 50">
+                    <path
+                        d="M22.4,28.6h7.9v21.4h-7.9v-10.8c-1.5.6-3.1.9-4.8.9-6.6,0-12-5.1-12.7-11.5h7.9c.6,2.1,2.5,3.6,4.8,3.6s4.2-1.5,4.8-3.6ZM32.3,10.8h-1.9s0-10.8,0-10.8h-7.9v18.5h9.7c2.5,0,4.7,1.8,5,4.2s-2,5.7-5.1,5.7v7.7c7.7,0,13.9-6.4,13-14-.7-6.4-6.3-11.2-12.8-11.2Z" />
+                </svg>
+            </div>
+
+        </footer>
+
+    </div>
+  </body>
+</html>

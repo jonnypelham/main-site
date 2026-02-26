@@ -1,0 +1,437 @@
+:root {
+
+    --themeLight-bg: #e9e9d8;
+    --themeLight-text: #282925;
+    --themeLight-accent: oklch(66.426% 0.09632 80.683);
+
+    --themeDark-bg: var(--themeLight-text);
+    --themeDark-text: var(--themeLight-bg);
+    --themeDark-accent: var(--themeLight-accent);
+
+    --color-bg: light-dark(var(--themeLight-bg), var(--themeDark-bg));
+    --color-textPrimary: light-dark(var(--themeLight-text), var(--themeDark-text));
+    --color-textLink: light-dark(var(--themeLight-accent), var(--themeDark-accent));
+    --color-accent: light-dark(var(--themeLight-accent), var(--themeDark-accent));
+    --color-highlight: oklch(100% 0.2 113 / 0.7);
+    --color-mid_grey: rgba(180, 180, 180, 0.8);
+    --color-light_grey: rgba(180, 180, 180, 0.4);
+
+    /* TYPE SCALE */
+    /* @link https://utopia.fyi/type/calculator?c=360,16,1.125,1350,20,1.333,5,2,&s=0.75,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+    --step--2: clamp(0.7035rem, 0.8216rem + -0.14vw, 0.7901rem);
+    --step--1: clamp(0.8889rem, 0.8711rem + 0.0789vw, 0.9377rem);
+    --step-0: clamp(1rem, 0.9091rem + 0.404vw, 1.25rem);
+    --step-1: clamp(1.125rem, 0.9282rem + 0.8747vw, 1.6663rem);
+    --step-2: clamp(1.2656rem, 0.9182rem + 1.5442vw, 2.2211rem);
+    --step-3: clamp(1.4238rem, 0.865rem + 2.4839vw, 2.9607rem);
+    --step-4: clamp(1.6018rem, 0.7491rem + 3.7897vw, 3.9467rem);
+    --step-5: clamp(1.802rem, 0.5443rem + 5.5901vw, 5.2609rem);
+
+    /* SPACING SCALE */
+    /* @link https://utopia.fyi/space/calculator?c=360,16,1.2,1350,20,1.414,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+    --space-3xs: clamp(0.25rem, 0.2273rem + 0.101vw, 0.3125rem);
+    --space-2xs: clamp(0.5rem, 0.4545rem + 0.202vw, 0.625rem);
+    --space-xs: clamp(0.75rem, 0.6818rem + 0.303vw, 0.9375rem);
+    --space-s: clamp(1rem, 0.9091rem + 0.404vw, 1.25rem);
+    --space-m: clamp(1.5rem, 1.3636rem + 0.6061vw, 1.875rem);
+    --space-l: clamp(2rem, 1.8182rem + 0.8081vw, 2.5rem);
+    --space-xl: clamp(3rem, 2.7273rem + 1.2121vw, 3.75rem);
+    --space-2xl: clamp(4rem, 3.6364rem + 1.6162vw, 5rem);
+    --space-3xl: clamp(6rem, 5.4545rem + 2.4242vw, 7.5rem);
+
+    /* One-up pairs */
+    --space-3xs-2xs: clamp(0.25rem, 0.1136rem + 0.6061vw, 0.625rem);
+    --space-2xs-xs: clamp(0.5rem, 0.3409rem + 0.7071vw, 0.9375rem);
+    --space-xs-s: clamp(0.75rem, 0.5682rem + 0.8081vw, 1.25rem);
+    --space-s-m: clamp(1rem, 0.6818rem + 1.4141vw, 1.875rem);
+    --space-m-l: clamp(1.5rem, 1.1364rem + 1.6162vw, 2.5rem);
+    --space-l-xl: clamp(2rem, 1.3636rem + 2.8283vw, 3.75rem);
+    --space-xl-2xl: clamp(3rem, 2.2727rem + 3.2323vw, 5rem);
+    --space-2xl-3xl: clamp(4rem, 2.7273rem + 5.6566vw, 7.5rem);
+
+    /* Custom pairs */
+    --space-xs-m: clamp(0.875rem, 0.4659rem + 1.8182vw, 1.875rem);
+    --space-xs-l: clamp(0.875rem, 0.2102rem + 2.9545vw, 2.5rem);
+    --space-s-l: clamp(1rem, 0.4545rem + 2.4242vw, 2.5rem);
+    --space-m-xl: clamp(1.5rem, 0.6818rem + 3.6364vw, 3.75rem);
+    --space-l-2xl: clamp(2rem, 0.9091rem + 4.8485vw, 5rem);
+    --space-l-xs: clamp(0.9375rem, 2.3864rem + -1.7172vw, 2rem);
+
+    /* TYPE SETTINGS */
+
+    --font-primary: aktiv-grotesk, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-mono: Menlo, Consolas, "Andale Mono", "Lucida Console", "Courier New", Courier, monospace;
+
+    --unit-wrapperMax: 90rem;
+    --tracking-s: -0.05ch;
+    --tracking-m: 0.01ch;
+    --tracking-l: 0.1ch;
+    --tracking-xl: 0.2ch;
+    --border-radius: 0.12em;
+    --flow-space: var(--space-2xs-xs);
+    --transition-time: 150ms;
+
+    accent-color: var(--color-accent);
+
+}
+
+html,
+body {
+    background: var(--color-textPrimary);
+    color: var(--color-textPrimary);
+    font-family: var(--font-primary);
+    font-size: var(--step-0);
+    line-height: 1.4;
+    letter-spacing: var(--tracking);
+}
+
+#wrapper {
+    background: var(--color-bg);
+    margin-inline: auto;
+}
+
+main,
+footer {
+    /* background-color: rgba(0, 162, 255, 0.15); */
+    max-width: var(--unit-wrapperMax);
+    min-height: 100lvh;
+    padding-inline: var(--space-xs-l);
+    margin: 0 auto;
+    container-type: inline-size;
+}
+
+section {
+    /* The below is not needed */
+    /* Just here to prevent empty ruleset errors */
+    /* Delete if there’s no more than the following line */
+    background-color: inherit;
+}
+
+article {
+    max-width: 60ch;
+    margin: 0 auto;
+    background-color: inherit;
+}
+
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+.auto-grid {
+    --auto-grid-gap: var(--space-l-xs, 1em);
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); */
+    gap: var(--auto-grid-gap);
+    grid-auto-flow: dense;
+}
+
+.grid-item {
+    background-color: var(--color-light_grey);
+    grid-column: span 3;
+    aspect-ratio: 4/3;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.grid-item:hover img {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+[id] {
+    /* Set scroll margin to variable value, use 2em as a fallback */
+    /* Update --scroll-margin with JS if needed */
+    scroll-margin-top: var(--scroll-margin, 2rem);
+}
+
+/* LINKS & SELECTION */
+
+a:not([class]) {
+    color: var(--color-textPrimary);
+    text-decoration: underline;
+    text-decoration-color: var(--color-textLink);
+    text-underline-offset: 0.1em;
+    text-decoration-skip-ink: auto;
+    transition: var(--transition-time);
+}
+
+a:hover {
+    color: var(--color-textLink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-bg);
+}
+
+/* Styles for external links */
+/*
+a[href^='http'] {
+    padding-right: 0em;
+}
+
+a[href^='http']::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: var(--color-accent);
+    background-size: 100%;
+    vertical-align: middle;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+a:hover[href^='http']::after {
+    background-color: var(--color-accent);
+}
+*/
+
+/* ------------------------------------------------------ */
+/* LAYOUT */
+/* ------------------------------------------------------ */
+
+p,
+li,
+blockquote:not([class]) {
+    /* max-width: 60ch; */
+    width: clamp(min(25vw, 45ch), 100%, 75ch);
+    overflow-wrap: break-word;
+    letter-spacing: var(--tracking);
+    padding: 0 0.15em;
+
+    -webkit-hyphens: auto;
+    -webkit-hyphenate-limit-before: 3;
+    -webkit-hyphenate-limit-after: 3;
+    -webkit-hyphenate-limit-chars: 6 3 3;
+    -webkit-hyphenate-limit-lines: 2;
+    -webkit-hyphenate-limit-last: always;
+    -webkit-hyphenate-limit-zone: 8%;
+    -moz-hyphens: auto;
+    -moz-hyphenate-limit-chars: 6 3 3;
+    -moz-hyphenate-limit-lines: 2;
+    -moz-hyphenate-limit-last: always;
+    -moz-hyphenate-limit-zone: 8%;
+    -ms-hyphens: auto;
+    -ms-hyphenate-limit-chars: 6 3 3;
+    -ms-hyphenate-limit-lines: 2;
+    -ms-hyphenate-limit-last: always;
+    -ms-hyphenate-limit-zone: 8%;
+    hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+    hyphenate-limit-lines: 2;
+    hyphenate-limit-last: always;
+    hyphenate-limit-zone: 8%;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 auto;
+    line-height: 1;
+    letter-spacing: var(--tracking-s);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding-top: var(--flow-space);
+}
+
+h1 {
+    font-size: 3em;
+    font-size: var(--step-3);
+}
+
+h2 {
+    font-size: 2.3em;
+    font-size: var(--step-2);
+}
+
+h3 {
+    font-size: 1.77em;
+    font-size: var(--step-1);
+}
+
+h4 {
+    font-size: 1.33em;
+    font-size: var(--step-0);
+}
+
+h5 {
+    font-size: 1em;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-l);
+}
+
+h6 {
+    font-size: 0.75em;
+    font-size: var(--step--2);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-xl);
+}
+
+/* ------------------------------------------------------ */
+/* UTILITIES */
+/* ------------------------------------------------------ */
+
+.flow>*+* {
+    /* Basic paragraph ryhythm */
+    /* Apply a margin defined by --flow-space to all the */
+    /* immediate child elements and use 1em as a fallback */
+    margin-block-start: var(--flow-space, 1em);
+}
+
+.region {
+    /* Spacing between sections */
+    padding-top: var(--region-space, var(--space-m-xl));
+    padding-bottom: var(--region-space, var(--space-m-xl));
+}
+
+.subregion {
+    /* Spacing between articles */
+    padding-top: var(--subregion-space, var(--space-s-m));
+    padding-bottom: var(--subregion-space, var(--space-s-m));
+}
+
+:focus {
+    outline: 2px solid;
+    outline-offset: 0.3ch;
+}
+
+:target {
+    scroll-margin-top: 2ex;
+}
+
+footer {
+    min-width: 100vw;
+}
+
+.page-footer {
+    color: var(--color-bg);
+    background-color: var(--color-textPrimary);
+    font-size: var(--step-0);
+    /* max-width: 40ch; */
+    letter-spacing: var(--tracking-l);
+    min-height: 100lvh;
+}
+
+.page-footer>* {
+    padding-right: var(--space-l);
+    grid-column: span 3;
+}
+
+.page-footer a {
+    color: var(--color-bg);
+    text-decoration: none;
+}
+
+.page-footer a:hover {
+    color: var(--color-accent);
+}
+
+.fullwidth {
+    grid-column: span 12;
+}
+
+.page-footer svg {
+    width: 2.5em;
+    height: 2.5em;
+    fill: var(--color-bg);
+
+    &:hover {
+        fill: var(--color-accent);
+    }
+}
+
+.footer-item {
+    padding-bottom: 1rem;
+}
+
+/* 3 items per row */
+@container (max-width: 80rem) {
+    .grid-item {
+        grid-column: span 4;
+    }
+}
+
+/* 2 items per row */
+@container (max-width: 60rem) {
+    .grid-item {
+        grid-column: span 6;
+    }
+}
+
+/* 1 item per row */
+@container (max-width: 48rem) {
+    .grid-item {
+        grid-column: span 12;
+        aspect-ratio: 1/1;
+    }
+
+    .page-footer>* {
+        grid-column: span 12;
+    }
+}
+
+/* -------------------------------------------------- */
+
+b,
+strong {
+    font-weight: 700;
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+code,
+kbd,
+pre,
+samp,
+.toggle-label {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--color-textPrimary);
+    background: var(--color-light_grey);
+    border-radius: var(--border-radius);
+    padding: 0.1em 0.3em 0.2em;
+    margin-inline: 0.05em;
+}
+
+mark {
+    background-color: var(--color-highlight);
+    border-radius: var(--border-radius);
+    padding: 0 0.15em 0.1em;
+}
+
+.fade-in-on-load {
+    transition: opacity 1s, translate 1s;
+    opacity: 1;
+    translate: 0 0;
+
+    @starting-style {
+        opacity: 0;
+        translate: 0 10px;
+    }
+}

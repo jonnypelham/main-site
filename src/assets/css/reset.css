@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: light dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    hanging-punctuation: first allow-end last;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin-block-end: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* Prevent runts */
+
+p,
+blockquote {
+    text-wrap: pretty;
+}
+
+/* Keep line lengths similar */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/* Remove blockquote styling */
+
+blockquote,
+q {
+    quotes: none;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Links that point to a location on the same page will scroll
+ * smoothly down to that location. */
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Hide content visually, but allow screen readers to read the
+ * content. Note that for Accessibility guidelines, this content
+ * must become visible if toggled over using a keyboard. */
+
+.visually-hidden:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* Give the hidden attribute most priority - fixes issue where
+ * an html element can be marked as hidden but is still visible.
+ * Use aria-hidden="true" to hide visual elements from
+ * screen readers. */
+
+[hidden] {
+    display: none !important;
+}
+
+/* Ensures disabled elements do not accept events */
+
+[disabled] {
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}
