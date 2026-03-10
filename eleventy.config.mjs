@@ -1,57 +1,131 @@
-// RSS plugin
-import { feedPlugin } from "@11ty/eleventy-plugin-rss";
-// Luxon dates
-import { DateTime } from "luxon";
-
-// Readable date for blog
-function blogDate(input) {
-  return `${new Date(input).toLocaleString("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })}`;
-}
+import { feedPlugin } from '@11ty/eleventy-plugin-rss'; // RSS
+import { DateTime } from 'luxon'; // Luxon dates
+import Image from '@11ty/eleventy-img';
+import { eleventyImageTransformPlugin } from '@11ty/eleventy-img'; // Images
 
 export default function (eleventyConfig) {
+    // Pass 'assets' directory to 'public'
+    eleventyConfig.addPassthroughCopy('src/assets/');
 
-  // Pass 'assets' directory to 'public'
-  eleventyConfig.addPassthroughCopy("src/assets/");
+    // Date - Locale
+    eleventyConfig.addFilter('localeDate', (dateObj) => {
+        return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_SHORT);
+    });
 
-  // Allow dates to be filtered using the function above
-  eleventyConfig.addFilter('blogDate', blogDate);
+    // Date – Abbreviated
+    eleventyConfig.addFilter('shortDate', (dateObj) => {
+        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
+            'dd LLL yyyy'
+        );
+    });
 
-  // CSS Minify
-  eleventyConfig.addFilter("cssmin", function (code) {
-		return new CleanCSS({}).minify(code).styles;
-	});
+    // Date - ISO
+    eleventyConfig.addFilter('isoDate', (dateObj) => {
+        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
+            'yyyy-MM-dd'
+        );
+    });
 
-  // Add the RSS Feed
-  eleventyConfig.addPlugin(feedPlugin, {
-		type: "rss",
-		outputPath: "/feed.xml",
-		collection: {
-			name: "blog",  // Only select posts with 'blog' tag
-			limit: 20,     // 0 means no limit
-		},
-		metadata: {
-			language: "en",
-			title: "My very cool blog",
-			subtitle: "I'm writing about stuff",
-			base: "https://example.com/",
-			author: {
-				name: "Jonathan Pelham",
-				email: "", // Optional
-			}
-		}
-	});
+    // Run Eleventy when CSS files change
+    eleventyConfig.addWatchTarget('assets/**/*.css');
+    // Run Eleventy when Image files change
+    eleventyConfig.addWatchTarget('assets/**/*.{svg,webp,png,jpg,jpeg,gif}');
 
-  return {
-    dir: {
-      input: 'src',
-      output: 'public',
-      includes: '_includes',
-      layouts: '_layouts'
+    // CSS Minify
+    eleventyConfig.addFilter('cssmin', function (code) {
+        return new CleanCSS({}).minify(code).styles;
+    });
+
+    // Image optimisation
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+        // Output formats for each image.
+        formats: ['avif', 'webp', 'auto'],
+        widths: ['auto'],
+        failOnError: false,
+        // Attributes assigned on <img> nodes override these values
+        htmlOptions: {
+            imgAttributes: {
+                loading: 'lazy',
+                decoding: 'async',
+            },
+        },
+        sharpOptions: {
+            animated: true,
+        },
+    });
+
+    // Image Shortcodes
+    eleventyConfig.addShortcode(
+        'image',
+        async function (src, alt, widths = [300, 600], sizes = '') {
+            return Image(src, {
+                widths,
+                formats: ['avif', 'jpeg'],
+                returnType: 'html', // new in v6.0
+                htmlOptions: {
+                    // new in v6.0
+                    imgAttributes: {
+                        alt, // required, though "" works fine
+                        sizes, // required with more than one width, optional if single width output
+                        loading: 'lazy', // optional
+                        decoding: 'async', // optional
+                    },
+                },
+            });
+        }
+    );
+
+    /**
+     * Takes a collection and returns it back in display order
+     * @param {Array} collection The 11ty collection
+     * @returns {Array} the sorted collection
+     */
+    function sortByDisplayOrder(collection) {
+        return collection.sort((a, b) =>
+            Number(a.data.displayOrder) > Number(b.data.displayOrder) ? 1 : -1
+        );
     }
-  };
 
-};
+    // Returns work items, sorted as above
+
+    eleventyConfig.addCollection('project', (collection) => {
+        return collection
+            .getFilteredByGlob('src/projects/*.md')
+            .filter((project) => project.data.featured === false);
+    });
+
+    eleventyConfig.addCollection('featuredProject', (collection) => {
+        return collection
+            .getFilteredByGlob('src/projects/*.md')
+            .filter((project) => project.data.featured === true);
+    });
+
+    // Add the RSS Feed
+    eleventyConfig.addPlugin(feedPlugin, {
+        type: 'rss',
+        outputPath: '/feed.xml',
+        collection: {
+            name: 'blog', // Only select posts with 'blog' tag
+            limit: 20, // 0 means no limit
+        },
+        metadata: {
+            language: 'en',
+            title: 'My very cool blog',
+            subtitle: "I'm writing about stuff",
+            base: 'https://example.com/',
+            author: {
+                name: 'Jonathan Pelham',
+                email: '', // Optional
+            },
+        },
+    });
+
+    // Directories
+    return {
+        dir: {
+            input: 'src',
+            output: 'public',
+            includes: '_includes',
+        },
+    };
+}
