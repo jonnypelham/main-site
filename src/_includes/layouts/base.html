@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-GB">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ title }}</title>
+        <link rel="stylesheet" type="text/css" href="/assets/css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/jpb4qmr.css" />
+    </head>
+
+    <body>
+        <div id="wrapper">
+            {% include "partials/site_header.html" %}
+
+            <main tabindex="-1" id="main-content">
+                <section class="region flow">
+                    {% block content %}
+                    <p>This displays if there is no content defined.</p>
+                    {% endblock %}
+                </section>
+            </main>
+
+            {% include "partials/site_footer.html" %}
+        </div>
+    </body>
+</html>

@@ -1,7 +1,7 @@
 ---
 title: My first post
 tags: blog
-layout: 'layouts/post.njk'
+layout: 'layouts/post.html'
 ---
 
 ![New livery for Faber Drama](../assets/images/FaberDrama-Iso.png)

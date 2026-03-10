@@ -127,5 +127,8 @@ export default function (eleventyConfig) {
             output: 'public',
             includes: '_includes',
         },
+        markdownTemplateEngine: 'njk',
+        htmlTemplateEngine: 'njk',
+        dataTemplateEngine: 'njk',
     };
 }

@@ -1,0 +1,8 @@
+{% extends "layouts/base.html" %} {% block content %}
+<article class="subregion flow">
+    <h3>{{ title }}</h3>
+    <time>{{ page.date | shortDate }}</time>
+
+    {{content | safe}}
+</article>
+{% endblock %}

@@ -1,4 +1,4 @@
 ---
 title: All projects
-layout: 'layouts/home.njk'
+layout: 'layouts/home.html'
 ---

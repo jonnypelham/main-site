@@ -1,6 +1,7 @@
 ---
-layout: 'layouts/home.njk'
+layout: 'layouts/home.html'
 ---
+
 ## About
 
 I am a graphic designer, who has worked in the publishing industry for 19 years.
