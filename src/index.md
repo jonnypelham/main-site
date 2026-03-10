@@ -11,4 +11,4 @@ Hello world. Landing page to include:
 - Brief intro
 - Featured work
 
-{% include 'partials/featured_work.html' %}
+{% include 'partials/featured_projects.html' %}

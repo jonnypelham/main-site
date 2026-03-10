@@ -88,13 +88,11 @@ export default function (eleventyConfig) {
 
     // Returns work items, sorted as above
 
-    eleventyConfig.addCollection('project', (collection) => {
-        return collection
-            .getFilteredByGlob('src/projects/*.md')
-            .filter((project) => project.data.featured === false);
+    eleventyConfig.addCollection('projects', (collection) => {
+        return collection.getFilteredByGlob('src/projects/*.md');
     });
 
-    eleventyConfig.addCollection('featuredProject', (collection) => {
+    eleventyConfig.addCollection('featuredProjects', (collection) => {
         return collection
             .getFilteredByGlob('src/projects/*.md')
             .filter((project) => project.data.featured === true);
