@@ -88,6 +88,10 @@ export default function (eleventyConfig) {
 
     // Returns work items, sorted as above
 
+    eleventyConfig.addCollection('blog', (collection) => {
+        return collection.getFilteredByGlob('src/blog/*.md').reverse();
+    });
+
     eleventyConfig.addCollection('projects', (collection) => {
         return collection.getFilteredByGlob('src/projects/*.md');
     });
