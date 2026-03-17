@@ -7,6 +7,11 @@ export default function (eleventyConfig) {
     // Pass 'assets' directory to 'public'
     eleventyConfig.addPassthroughCopy('src/assets/');
 
+    // Enables use of njk language features in html files
+    eleventyConfig.addExtension('html', {
+        key: 'njk',
+    });
+
     // Date - Locale
     eleventyConfig.addFilter('localeDate', (dateObj) => {
         return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_SHORT);
@@ -86,16 +91,17 @@ export default function (eleventyConfig) {
         );
     }
 
-    // Returns work items, sorted as above
-
+    // Returns blog items
     eleventyConfig.addCollection('blog', (collection) => {
         return collection.getFilteredByGlob('src/blog/*.md').reverse();
     });
 
+    // Returns all project items
     eleventyConfig.addCollection('projects', (collection) => {
         return collection.getFilteredByGlob('src/projects/*.md');
     });
 
+    // Returns featured project items only
     eleventyConfig.addCollection('featuredProjects', (collection) => {
         return collection
             .getFilteredByGlob('src/projects/*.md')

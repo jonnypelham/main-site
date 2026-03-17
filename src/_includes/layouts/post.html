@@ -1,8 +1,34 @@
-{% extends "layouts/base.html" %} {% block content %}
+{% extends "layouts/base.html" %}
+
+{% set pageHeaderTitle = title %}
+
+{# Render post date and any tags that this post has been filed under #}
+{% set pageHeaderSummary %}
+<time datetime="{{ page.date | localeDate }}">{{ page.date | isoDate }}</time>
+{% if tags %}
+<p class="visually-hidden" id="tags-desc">Tags that this post has been filed under.</p>
+<ul class="tags-list" aria-describedby="tags-desc">
+    {% for tag in tags %}
+    <li>
+        <a href="/tag/{{ tag | slugify }}/">#{{ tag | title | replace(' ', '') }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endset %}
+
+{% block content %}
+<article class="subregion flow">
+    {% include "partials/page_header.html" %}
+    {{ content | safe }}
+</article>
+{% endblock %}
+
+{# {% block content %}
 <article class="subregion flow">
     <h3>{{ title }}</h3>
     <time>{{ page.date | shortDate }}</time>
 
     {{content | safe}}
 </article>
-{% endblock %}
+{% endblock %} #}

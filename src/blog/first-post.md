@@ -1,6 +1,8 @@
 ---
 title: My first post
-layout: 'layouts/post.html'
+tags:
+    - Culture
+    - Design thinking
 ---
 
 I decided to start blogging and build my blog with [Eleventy](https://11ty.dev)

@@ -6,9 +6,10 @@ featuredWork:
     summary: 'Some stuff that should give you an idea of what we’re all about.'
 ---
 
-Hello world. Landing page to include:
+## To Do
 
-- Brief intro
-- Featured work
+Include brief intro.
+
+## Featured Work
 
 {% include 'partials/featured_projects.html' %}

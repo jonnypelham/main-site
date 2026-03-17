@@ -1,7 +1,8 @@
 <article class="flow">
-    {% for project in collections.projects %}
 
-    <h2>{{ project.data.title }}</h2>
+    {% for project in collections.projects %}
+    <h3><a href="{{ project.url }}" aria-label="View {{ project.data.title }}">{{ project.data.title }}</a></h3>
     <p>{{ project.data.summary }}</p>
     {% endfor %}
+
 </article>
